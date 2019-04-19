@@ -1,22 +1,26 @@
-#' Compute similiarty/distance between raws or columns of large matrices
+#' Compute similarity/distance between rows or columns of large matrices
 #'
 #' Fast similarity/distance computation function for large sparse matrices. You
-#' can floor small similairty value to to save computation time and storage
+#' can floor small similarity value to to save computation time and storage
 #' space by an arbitrary threashold (\code{min_simil}) or rank (\code{rank}).
 #' Please increase the numbner of threads for better perfromance using
 #' \code{\link[RcppParallel]{setThreadOptions}}.
+#'
 #' @param x a \link{matrix} or \link{Matrix} object
 #' @param y if a \link{matrix} or \link{Matrix} object is provided, proximity
 #'   between documents or features in \code{x} and \code{y} is computed.
-#' @param margin integer indicating margin of similiarty/distance computation. 1
+#' @param margin integer indicating margin of similarity/distance computation. 1
 #'   indicates rows or 2 indicates columns.
 #' @param method method to compute similarity or distance
-#' @param min_simil the minimum similiarty value to be recoded.
-#' @param rank an integer value specifying top-n most similiarty values to be
+#' @param min_simil the minimum similarity value to be recoded.
+#' @param rank an integer value specifying top-n most similarity values to be
 #'   recorded.
 #' @param p weight for minkowski distance
+#' @param digits determines rounding of small values towards zero. Use
+#'   primarily to correct rounding errors in C++. See \link{zapsmall}.
 #' @import methods Matrix
 #' @importFrom RcppParallel RcppParallelLibs
+#' @seealso zapsmall
 #' @export
 #' @examples
 #' mt <- Matrix::rsparsematrix(100, 100, 0.01)
@@ -24,10 +28,10 @@
 simil <- function(x, y = NULL, margin = 1,
                   method = c("cosine", "correlation", "jaccard", "ejaccard",
                              "dice", "edice", "hamman", "simple matching", "faith"),
-                  min_simil = NULL, rank = NULL) {
+                  min_simil = NULL, rank = NULL, digits = 14) {
 
     method <- match.arg(method)
-    proxy(x, y, margin, method, min_proxy = min_simil, rank = rank)
+    proxy(x, y, margin, method, min_proxy = min_simil, rank = rank, digits = digits)
 
 }
 
@@ -39,7 +43,7 @@ simil <- function(x, y = NULL, margin = 1,
 dist <- function(x, y = NULL, margin = 1,
                  method = c("euclidean", "chisquared", "hamming", "kullback",
                             "manhattan", "maximum", "canberra", "minkowski"),
-                 p = 2) {
+                 p = 2, digits = 14) {
 
     method <- match.arg(method)
     proxy(x, y, margin, method, p = p)
@@ -53,7 +57,7 @@ proxy <- function(x, y = NULL, margin = 1,
                              "dice", "edice", "hamman", "simple matching", "faith",
                              "euclidean", "chisquared", "hamming", "kullback",
                              "manhattan", "maximum", "canberra", "minkowski"),
-                  p = 2, min_proxy = NULL, rank = NULL) {
+                  p = 2, min_proxy = NULL, rank = NULL, digits = 14) {
 
     method <- match.arg(method)
     if(is(x, 'sparseMatrix')) {
@@ -61,6 +65,9 @@ proxy <- function(x, y = NULL, margin = 1,
     } else {
         stop("x must be a sparseMatrix")
     }
+
+    symm <- is.null(y)
+
     if (is.null(y)) {
         y <- x
     } else {
@@ -116,17 +123,28 @@ proxy <- function(x, y = NULL, margin = 1,
         y <- as(as(y, "lgCMatrix"), "dgCMatrix")
     }
     if (method %in% c("cosine", "correlation", "euclidean")) {
-        result <- cpp_linear(x, y,
-                             match(method, c("cosine", "correlation", "euclidean")),
-                             rank, min_proxy)
+        result <- cpp_linear(
+            mt1 = x,
+            mt2 = y,
+            method = match(method, c("cosine", "correlation", "euclidean")),
+            rank = rank,
+            limit = min_proxy,
+            symm = symm
+        )
     } else {
-        result <- cpp_pair(x, y,
-                           match(method, c("ejaccard", "edice", "hamman", "simple matching",
-                                           "faith", "chisquared", "kullback", "manhattan",
-                                           "maximum", "canberra", "minkowski")),
-                           rank, min_proxy, weight)
+        result <- cpp_pair(
+            mt1 = x,
+            mt2 = y,
+            method = match(method, c("ejaccard", "edice", "hamman", "simple matching",
+                                     "faith", "chisquared", "kullback", "manhattan",
+                                     "maximum", "canberra", "minkowski")),
+            rank = rank,
+            limit = min_proxy,
+            weight = weight,
+            symm = symm
+        )
     }
-
+    result@x <- zapsmall(result@x, digits)
     dimnames(result) <- list(colnames(x), colnames(y))
     return(result)
 }
