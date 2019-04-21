@@ -1,6 +1,6 @@
-df71cc1a95ae05fbf8ea14b9caa7f154 *DESCRIPTION
+6a290e1e527749fe7bd2740934f92eed *DESCRIPTION
 12db4041caffa40d7b6137f6c89eaeda *NAMESPACE
-c355691887dcf73734a55a29cd924735 *NEWS.md
+967c662f8aff58c665c636bee8da1435 *NEWS.md
 f40e203aba5141ebf2c01b5850680740 *R/RcppExports.R
 55d2a2624a604f28d84969239b1c33d0 *R/proxy.R
 152f56a3827f6d628af98b91f9a829a1 *README.md
@@ -18,6 +18,6 @@ d6427065415eb6597cb61927630422f4 *src/linear.cpp
 d2122f5c8a308e799456f42b07a981cf *src/pair.cpp
 909a633702c7151b36f3994e5970c8af *src/proxyc.h
 cbfc55cb303250d1850126f108762d17 *tests/testthat.R
-b58edd4e432347fd2389a09b7dabbe9b *tests/testthat/test-dist.R
-9517c8a82feb196cc320598c2657af15 *tests/testthat/test-proxy.R
-9fc5770625766b081b575a93b25e44fb *tests/testthat/test-simil.R
+cd022a3f14c7adfacf6753b24eb8aafb *tests/testthat/test-dist.R
+739eec19a65896a73849476db810d56d *tests/testthat/test-proxy.R
+767df12008a5a65e4348ee3159c3fa5f *tests/testthat/test-simil.R
