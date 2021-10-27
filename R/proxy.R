@@ -6,7 +6,8 @@
 #' Please increase the number of threads for better performance using
 #' \code{\link[RcppParallel]{setThreadOptions}}.
 #'
-#' @param x \link{Matrix} object
+#' @param x \link{matrix} or \link{Matrix} object. Dense matrices are covered to
+#'   the \link{CsparseMatrix-class} internally.
 #' @param y if a \link{matrix} or \link{Matrix} object is provided, proximity
 #'   between documents or features in \code{x} and \code{y} is computed.
 #' @param margin integer indicating margin of similarity/distance computation. 1
@@ -21,8 +22,11 @@
 #' @param diag if \code{TRUE}, only compute diagonal elements of the
 #'   similarity/distance matrix; useful when comparing corresponding rows or
 #'   columns of `x` and `y`.
-#' @param use_nan if \code{TRUE}, return `NaN` when the standard deviation in
-#'   correlation is zero.
+#' @param use_nan if \code{TRUE}, return `NaN` if the standard deviation of a
+#'   vector is zero when `method` is "correlation"; if all the values are zero
+#'   in a vector when `method` is "cosine", "kullback" or "chisquared". Note
+#'   that use of `NaN` makes the similarity/distance matrix denser and therefore
+#'   larger.
 #' @param digits determines rounding of small values towards zero. Use primarily
 #'   to correct rounding errors in C++. See \link{zapsmall}.
 #' @import methods Matrix
@@ -58,7 +62,7 @@ dist <- function(x, y = NULL, margin = 1,
 
     method <- match.arg(method)
     proxy(x, y, margin, method, p = p, smooth = smooth, drop0 = drop0,
-          diag = diag, digits = digits)
+          diag = diag, use_nan = use_nan, digits = digits)
 }
 
 #' @import Rcpp
@@ -72,22 +76,14 @@ proxy <- function(x, y = NULL, margin = 1,
                   diag = FALSE, use_nan = FALSE, digits = 14) {
 
     method <- match.arg(method)
-    if(is(x, 'sparseMatrix')) {
-        x <- as(x, "dgCMatrix")
-    } else {
-        stop("x must be a sparseMatrix")
-    }
+    x <- as(x, "dgCMatrix")
 
     symm <- is.null(y)
 
     if (is.null(y)) {
         y <- x
     } else {
-        if(is(y, 'sparseMatrix')) {
-            y <- as(y, "dgCMatrix")
-        } else {
-            stop("y must be a sparseMatrix")
-        }
+        y <- as(y, "dgCMatrix")
     }
     if (!margin %in% c(1, 2))
         stop("Matrgin must be 1 (row) or 2 (column)")
@@ -106,11 +102,15 @@ proxy <- function(x, y = NULL, margin = 1,
         rank <- ncol(x)
     if (rank < 1)
         stop("rank must be great than or equal to 1")
-    if (method == "correlation" && !use_nan) {
-        if (any(colSds(x) == 0) || any(colSds(y) == 0))
-            warning("x or y has vectors with zero standard deviation; consider setting use_nan = TRUE", call. = FALSE)
+    if (!use_nan) {
+        if (method == "correlation") {
+            if (any(colSds(x) == 0) || any(colSds(y) == 0))
+                warning("x or y has vectors with zero standard deviation; consider setting use_nan = TRUE", call. = FALSE)
+        } else if (method %in% c("cosine", "kullback", "chisquared")) {
+            if (any(colZeros(x) == nrow(x)) || any(colZeros(y) == nrow(y)))
+                warning("x or y has vectors with all zero; consider setting use_nan = TRUE", call. = FALSE)
+        }
     }
-
     boolean <- FALSE
     weight <- 1
     if (method == "jaccard") {
