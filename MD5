@@ -1,11 +1,11 @@
-63d1028f4a8272f9fe084cc761efd3a8 *DESCRIPTION
+2426927ae2e37708f1666bb0e19c27d1 *DESCRIPTION
 352ffca70f2e629cfde5a2433c05668c *NAMESPACE
-feca28d6cdbbbeb749e70cc5db97a19b *NEWS.md
+35aeb529daa3486c793951e5abcf032b *NEWS.md
 aef81bee8b5cdeb4be6d962f9785dbc4 *R/RcppExports.R
-b9d3712781fa7806bfca710362860446 *R/proxy.R
+5c935cb49ea2423024a175e8be2fe2c4 *R/proxy.R
 b810af8442cd93a0d29107b2bb2de447 *README.md
-8ffe21a89d5e362e1dd066fe02f99fea *man/colSds.Rd
-f2e6d1fefdb90ac23751233bc7e5c7aa *man/colZeros.Rd
+251f25fa2bc6c3c7c590f193c1043fb9 *man/colSds.Rd
+b7dfe9b8ea94d6a9d5d1837a2c2e673d *man/colZeros.Rd
 5d9533d23e3e48cc84389225e8ccec21 *man/images/unnamed-chunk-3-1.png
 9df80ab8298d209304fc5b97649dd0a5 *man/images/unnamed-chunk-4-1.png
 0ff99749bec4ffb82c24b55861729a99 *man/images/unnamed-chunk-5-1.png
@@ -23,5 +23,5 @@ c1d7c2c7d204e38756b71dca6a965686 *src/proxyc.h
 cbfc55cb303250d1850126f108762d17 *tests/testthat.R
 1a9c9c60909967dea13fdc78d51dbc0f *tests/testthat/function.R
 56291899a3f596171f15e2383e325a2c *tests/testthat/test-dist.R
-f2f8d33274d81e06a753e44cc207e9e1 *tests/testthat/test-proxy.R
-1f76a1392113614ab4ee23e8caeba5f2 *tests/testthat/test-simil.R
+4260481ae8d4c57057dd3f4f7be5e17c *tests/testthat/test-proxy.R
+046887573e5c1dd7fa80a31c0ffcb33e *tests/testthat/test-simil.R
