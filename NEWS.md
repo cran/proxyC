@@ -1,8 +1,15 @@
+# proxyC 0.3.1
+
+## New features and improvements
+
+- Add "jensen" to `dist()` for Jensen-Shannon divergence as a symmetric version of Kullback-Leibler divergence.
+- Change how `x` and `y` are coerced to dgCMatrix for Matrix v1.4-2.
+
 # proxyC 0.3.0
 
 ## New features and improvements
 
-- Add "jeffreys" to `dist()` for Jeffreys divergence. It is a symmetric version of Kullback-Leibluer divergence (#31).
+- Add "jeffreys" to `dist()` for Jeffreys divergence. It is a symmetric version of Kullback-Leibler divergence (#31).
 
 # proxyC 0.2.4
 
