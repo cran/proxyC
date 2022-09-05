@@ -1,8 +1,8 @@
-3ffa3a434b94429f038e248d761f6376 *DESCRIPTION
+b84d898434d8d3dd6149c85c063a5bd1 *DESCRIPTION
 352ffca70f2e629cfde5a2433c05668c *NAMESPACE
-cb8199e18e6187bed6f6f36a148ebeaa *NEWS.md
+178c62f692f315cad1dac096f1b440bc *NEWS.md
 aef81bee8b5cdeb4be6d962f9785dbc4 *R/RcppExports.R
-81498d71018f3733cbc0da3484a31a39 *R/proxy.R
+5fd6cd3b4bc3ebf3d37fd1204a9b687a *R/proxy.R
 b810af8442cd93a0d29107b2bb2de447 *README.md
 251f25fa2bc6c3c7c590f193c1043fb9 *man/colSds.Rd
 b7dfe9b8ea94d6a9d5d1837a2c2e673d *man/colZeros.Rd
@@ -11,7 +11,7 @@ b7dfe9b8ea94d6a9d5d1837a2c2e673d *man/colZeros.Rd
 0ff99749bec4ffb82c24b55861729a99 *man/images/unnamed-chunk-5-1.png
 ae350e1b82bbb297f7f5d20c02dd0823 *man/images/unnamed-chunk-6-1.png
 e1f5243cd404cc8169c98e7abc2f5d6c *man/images/unnamed-chunk-7-1.png
-74de7b6a17d977c3bb6515d937228787 *man/simil.Rd
+1ff1a728764aee1cfc0b1c8b89fc2a16 *man/simil.Rd
 7f2dea4d6f03b91d4fc76b4d0882cec5 *src/Makevars
 65cd21b575e30b125684b94591c76fc8 *src/Makevars.win
 c9fc8ec74f5f3028e4920ef64287724d *src/RcppExports.cpp

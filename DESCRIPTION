@@ -1,7 +1,7 @@
 Package: proxyC
 Type: Package
 Title: Computes Proximity in Large Sparse Matrices
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: c(
     person("Kohei", "Watanabe", email = "watanabe.kohei@gmail.com", role = c("cre", "aut", "cph"), 
            comment = c(ORCID = "0000-0001-6519-5265")),
@@ -24,10 +24,10 @@ SystemRequirements: C++11
 Encoding: UTF-8
 RoxygenNote: 7.2.1
 NeedsCompilation: yes
-Packaged: 2022-08-22 22:19:09 UTC; kohei
+Packaged: 2022-09-05 01:21:35 UTC; kohei
 Author: Kohei Watanabe [cre, aut, cph]
     (<https://orcid.org/0000-0001-6519-5265>),
   Robrecht Cannoodt [aut] (<https://orcid.org/0000-0003-3641-729X>)
 Maintainer: Kohei Watanabe <watanabe.kohei@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-08-22 22:40:02 UTC
+Date/Publication: 2022-09-05 06:40:02 UTC
