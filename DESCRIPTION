@@ -1,7 +1,7 @@
 Package: proxyC
 Type: Package
 Title: Computes Proximity in Large Sparse Matrices
-Version: 0.3.2
+Version: 0.3.3
 Authors@R: c(
     person("Kohei", "Watanabe", email = "watanabe.kohei@gmail.com", role = c("cre", "aut", "cph"), 
            comment = c(ORCID = "0000-0001-6519-5265")),
@@ -18,16 +18,17 @@ BugReports: https://github.com/koheiw/proxyC/issues
 License: GPL-3
 Depends: R (>= 3.1.0), methods
 Imports: Matrix (>= 1.2), Rcpp (>= 0.12.12), RcppParallel
-Suggests: testthat, entropy, proxy
+Suggests: testthat, entropy, proxy, knitr, rmarkdown
 LinkingTo: Rcpp, RcppParallel, RcppArmadillo (>= 0.7.600.1.0)
 SystemRequirements: C++11
 Encoding: UTF-8
 RoxygenNote: 7.2.1
+VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2022-09-05 01:21:35 UTC; kohei
+Packaged: 2022-10-06 03:40:51 UTC; kohei
 Author: Kohei Watanabe [cre, aut, cph]
     (<https://orcid.org/0000-0001-6519-5265>),
   Robrecht Cannoodt [aut] (<https://orcid.org/0000-0003-3641-729X>)
 Maintainer: Kohei Watanabe <watanabe.kohei@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-09-05 06:40:02 UTC
+Date/Publication: 2022-10-06 04:20:02 UTC

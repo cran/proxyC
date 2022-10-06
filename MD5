@@ -1,9 +1,13 @@
-b84d898434d8d3dd6149c85c063a5bd1 *DESCRIPTION
+0800a585f1c4e7cb422eca5a705a7f4a *DESCRIPTION
 352ffca70f2e629cfde5a2433c05668c *NAMESPACE
-178c62f692f315cad1dac096f1b440bc *NEWS.md
+b5cedea45ed3779d0675087de702e966 *NEWS.md
 aef81bee8b5cdeb4be6d962f9785dbc4 *R/RcppExports.R
-5fd6cd3b4bc3ebf3d37fd1204a9b687a *R/proxy.R
+e1fb75ad23e673032f89c0ae65500f76 *R/proxy.R
 b810af8442cd93a0d29107b2bb2de447 *README.md
+fb85e57531806469f4b3d7f6c4353eee *build/vignette.rds
+4b73eb641175b24140225b50974d32e2 *inst/doc/measures.R
+6da6d6a23c59f92f838334a558d30bbc *inst/doc/measures.Rmd
+9400e3bc38532f5b84490e2697b0ede3 *inst/doc/measures.html
 251f25fa2bc6c3c7c590f193c1043fb9 *man/colSds.Rd
 b7dfe9b8ea94d6a9d5d1837a2c2e673d *man/colZeros.Rd
 5d9533d23e3e48cc84389225e8ccec21 *man/images/unnamed-chunk-3-1.png
@@ -11,7 +15,7 @@ b7dfe9b8ea94d6a9d5d1837a2c2e673d *man/colZeros.Rd
 0ff99749bec4ffb82c24b55861729a99 *man/images/unnamed-chunk-5-1.png
 ae350e1b82bbb297f7f5d20c02dd0823 *man/images/unnamed-chunk-6-1.png
 e1f5243cd404cc8169c98e7abc2f5d6c *man/images/unnamed-chunk-7-1.png
-1ff1a728764aee1cfc0b1c8b89fc2a16 *man/simil.Rd
+01d9ad959c8c69b469f38777327ad3c7 *man/simil.Rd
 7f2dea4d6f03b91d4fc76b4d0882cec5 *src/Makevars
 65cd21b575e30b125684b94591c76fc8 *src/Makevars.win
 c9fc8ec74f5f3028e4920ef64287724d *src/RcppExports.cpp
@@ -22,6 +26,7 @@ c9fc8ec74f5f3028e4920ef64287724d *src/RcppExports.cpp
 c1d7c2c7d204e38756b71dca6a965686 *src/proxyc.h
 cbfc55cb303250d1850126f108762d17 *tests/testthat.R
 1a9c9c60909967dea13fdc78d51dbc0f *tests/testthat/function.R
-d78183379f67f0118e1ce4625735f7b1 *tests/testthat/test-dist.R
+d15f5d7a28b8b5725c67c714b92492f3 *tests/testthat/test-dist.R
 4260481ae8d4c57057dd3f4f7be5e17c *tests/testthat/test-proxy.R
-046887573e5c1dd7fa80a31c0ffcb33e *tests/testthat/test-simil.R
+6680cad9c21f068eef4595497b417bef *tests/testthat/test-simil.R
+6da6d6a23c59f92f838334a558d30bbc *vignettes/measures.Rmd
