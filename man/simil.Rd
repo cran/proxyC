@@ -9,13 +9,15 @@ simil(
   x,
   y = NULL,
   margin = 1,
-  method = c("cosine", "correlation", "jaccard", "ejaccard", "fjaccard", "dice", "edice",
+  method = c("cosine", "correlation", "dice", "edice", "jaccard", "ejaccard", "fjaccard",
     "hamann", "faith", "simple matching"),
+  mask = NULL,
   min_simil = NULL,
   rank = NULL,
   drop0 = FALSE,
   diag = FALSE,
   use_nan = NULL,
+  sparse = TRUE,
   digits = 14
 )
 
@@ -25,19 +27,21 @@ dist(
   margin = 1,
   method = c("euclidean", "chisquared", "kullback", "jeffreys", "jensen", "manhattan",
     "maximum", "canberra", "minkowski", "hamming"),
+  mask = NULL,
   p = 2,
   smooth = 0,
   drop0 = FALSE,
   diag = FALSE,
   use_nan = NULL,
+  sparse = TRUE,
   digits = 14
 )
 }
 \arguments{
-\item{x}{\link{matrix} or \link{Matrix} object. Dense matrices are covered to
-the \link{CsparseMatrix-class} internally.}
+\item{x}{a \link[base:matrix]{base::matrix} or \link[Matrix:Matrix]{Matrix::Matrix} object. Dense matrices are covered to
+the \link[Matrix:CsparseMatrix-class]{Matrix::CsparseMatrix} internally.}
 
-\item{y}{if a \link{matrix} or \link{Matrix} object is provided, proximity
+\item{y}{if a \link[base:matrix]{base::matrix} or \link[Matrix:Matrix]{Matrix::Matrix} object is provided, proximity
 between documents or features in \code{x} and \code{y} is computed.}
 
 \item{margin}{integer indicating margin of similarity/distance computation. 1
@@ -45,19 +49,22 @@ indicates rows or 2 indicates columns.}
 
 \item{method}{method to compute similarity or distance}
 
+\item{mask}{a pattern matrix created using \code{\link[=mask]{mask()}} for masked similarity/distance computation.
+The shape of the matrix must be the same as the resulting matrix.}
+
 \item{min_simil}{the minimum similarity value to be recorded.}
 
 \item{rank}{an integer value specifying top-n most similarity values to be
 recorded.}
 
-\item{drop0}{if \code{TRUE}, zero values are removed regardless of
-\code{min_simil} or \code{rank}.}
+\item{drop0}{if \code{TRUE}, removes zero values to make the
+similarity/distance matrix sparse. It has no effect when \code{dense = TRUE}.}
 
 \item{diag}{if \code{TRUE}, only compute diagonal elements of the
 similarity/distance matrix; useful when comparing corresponding rows or
 columns of \code{x} and \code{y}.}
 
-\item{use_nan}{if \code{TRUE}, return \code{NaN} if the standard deviation of a vector
+\item{use_nan}{if \code{TRUE}, returns \code{NaN} if the standard deviation of a vector
 is zero when \code{method} is "correlation"; if all the values are zero in a
 vector when \code{method} is "cosine", "chisquared", "kullback", "jeffreys" or
 "jensen". Note that use of \code{NaN} makes the similarity/distance matrix
@@ -65,10 +72,14 @@ denser and therefore larger in RAM. If \code{FALSE}, return zero in same use
 situations as above. If \code{NULL}, will also return zero but also generate a
 warning (default).}
 
-\item{digits}{determines rounding of small values towards zero. Use primarily
-to correct rounding errors in C++. See \link{zapsmall}.}
+\item{sparse}{if \code{TRUE}, returns \link[Matrix:sparseMatrix]{Matrix::sparseMatrix} object. When neither
+\code{min_simil} nor \code{rank} is used, dense matrices require less space in RAM.}
 
-\item{p}{weight for Minkowski distance}
+\item{digits}{determines rounding of small values towards zero. Use primarily
+to correct floating point errors. Rounding is performed in C++ in a similar
+way as \link[base:zapsmall]{base::zapsmall}.}
+
+\item{p}{weight for Minkowski distance.}
 
 \item{smooth}{adds a  fixed value to all the cells to avoid division by zero.
 Only used when \code{method} is "chisquared", "kullback", "jeffreys" or "jensen".}

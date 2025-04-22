@@ -1,6 +1,8 @@
 require(Matrix)
+require(proxyC)
+options(proxyC.threads = 2)
 
-mat_test <- rsparsematrix(100, 50, 0.5)
+mat_test <- rsparsematrix(500, 50, 0.5)
 mat_test[1, ] <- 0.0 # set sum(x) == 0
 mat_test[2, ] <- 0.5 # set sd(x) == 0
 mat_test[3, ] <- 0.0001 # set sd(x) == 0
@@ -153,4 +155,10 @@ test_dist <- function(x, method, margin, ignore_upper = FALSE, ...) {
         s5[upper.tri(s5, TRUE)] <- s6[upper.tri(s5, TRUE)] <- 0
     expect_equal(as.numeric(s5), as.numeric(s6), tolerance = 0.001)
 }
+
+equivalent_matrix <- function(x, y) {
+    expect_true(all(x == y))
+}
+
+
 
