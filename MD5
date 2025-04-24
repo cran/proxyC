@@ -1,6 +1,6 @@
-283e403622772757ad2b2ce7e17101cd *DESCRIPTION
+66bee052b9432c00d10ad8b85645df47 *DESCRIPTION
 b60a184c924df7134e47c754a3f1ba9f *NAMESPACE
-a9d8fed39270aab42f3b612c24d0454e *NEWS.md
+de11f253d838cbca9762f5bc96ed3b25 *NEWS.md
 73138c985771ef720b2d23966c43a033 *R/RcppExports.R
 04ed73022bee51be0525f28842516865 *R/mask.R
 fb47b57049b4a8a4d088629ed2e09643 *R/proxy.R
@@ -12,7 +12,7 @@ c42be5814898a011b3fb5a78854d8cf7 *cleanup
 f9f8357c9e0a20c1c17c2b3977993449 *configure.ac
 1a91688cbbecb616039818b380a280e9 *inst/doc/measures.R
 e108b72a413c660d30855f85ac83576e *inst/doc/measures.Rmd
-f8ada375b47b6c214255e478f6941bf1 *inst/doc/measures.html
+a06d7964d0880dcfc3c1d2ac9f7ac620 *inst/doc/measures.html
 36f833704cb1a09e1418bc8a0a151b69 *inst/libtbb.R
 c01f57f5ea8f99aca242f9001123acb6 *man/colSds.Rd
 18addaa25b4311c2878081a1c78ea398 *man/colZeros.Rd
@@ -26,7 +26,7 @@ cf8c04975dd1196a8decf41e23c0c73a *man/simil.Rd
 b255194d30b8cf40c9f8987fa595ca85 *src/Makevars.win
 e60a2d68b3ac28eb42919f780fde449b *src/RcppExports.cpp
 4aacff798c4c44073118686d9b803bcc *src/dev.h
-d4bab1f0d598a8da8cfb37fbad8d3a4e *src/linear.cpp
+f330de6ef517c09642c5bd2c48e01f85 *src/linear.cpp
 6459d458bd738931f0d9bab43f25645d *src/mask.cpp
 ac82e2d39dd83d4a3bd3491a16e87922 *src/pair.cpp
 009857d26539a4f80f320f38a605d95e *src/proxyc.h
